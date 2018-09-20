@@ -7,26 +7,26 @@ import (
 type Changelist []Change
 
 type Change interface {
-	change()
+	isChange()
 }
 
 type changeBase struct {
 	txID uint64
 }
 
-func (_ *changeBase) change() {}
+func (_ *changeBase) isChange() {}
 
 // TODO: proper ID of a node somehow
-type ID int64
+type ID nodes.Node
 
 // key in a node, string for nodes.Object and int for nodes.Array
 type Key interface{ key() }
 
-type StringKey string
-type IntKey int
+type String string
+type Int int
 
-func (_ IntKey) key()    {}
-func (_ StringKey) key() {}
+func (_ Int) key()    {}
+func (_ String) key() {}
 
 // four change types
 

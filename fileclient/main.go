@@ -45,7 +45,11 @@ func main() {
 		return
 	}
 	src, dst := getData(*filename)
-	cost := diff.Cost(src, dst)
-	fmt.Printf("cost is %v\n", cost)
+	changes := diff.Changes(src, dst)
+	for _, ch := range changes {
+		fmt.Printf("%T: %v\n", ch, ch)
+	}
+	fmt.Printf("changelist length is %v\n", len(changes))
+	fmt.Printf("cost is %v\n", diff.Cost(src, dst))
 	//https://github.com/bblfsh/sdk/blob/ccba81e734443cce192d2aef033ccc0e23751348/protocol/driver.go#L62
 }
