@@ -17,7 +17,7 @@ type changeBase struct {
 func (_ *changeBase) isChange() {}
 
 // TODO: proper ID of a node somehow
-type ID nodes.Node
+type ID interface{}
 
 // key in a node, string for nodes.Object and int for nodes.Array
 type Key interface{ key() }
